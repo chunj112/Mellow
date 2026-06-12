@@ -229,8 +229,13 @@ logoutBtn?.addEventListener('click', handleLogout);
 
 quizProfileForm.addEventListener('submit', event => {
   event.preventDefault();
+  const birthDate = getBirthDateValue();
+  if (!birthDate) {
+    alert('Ngày sinh chưa hợp lệ. Hãy kiểm tra lại ngày, tháng và năm.');
+    return;
+  }
   quizProfile = {
-    birthDate: document.getElementById('birth-date').value,
+    birthDate,
     gender: document.getElementById('quiz-gender').value
   };
   startQuizSession();
@@ -326,6 +331,22 @@ function shuffleArray(items) {
     .map(item => ({ item, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ item }) => item);
+}
+
+function getBirthDateValue() {
+  const day = Number(document.getElementById('birth-day').value);
+  const month = Number(document.getElementById('birth-month').value);
+  const year = Number(document.getElementById('birth-year').value);
+  if (!day || !month || !year) return '';
+
+  const date = new Date(year, month - 1, day);
+  const isValid =
+    date.getFullYear() === year &&
+    date.getMonth() === month - 1 &&
+    date.getDate() === day;
+
+  if (!isValid) return '';
+  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
 function getZodiac(value) {

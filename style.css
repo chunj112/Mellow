@@ -333,6 +333,18 @@ button {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
+.birth-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 0.9fr 1fr 1.2fr;
+  gap: 10px;
+}
+.birth-grid label {
+  display: grid;
+  gap: 7px;
+  color: #3d4552;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
 .date-form label,
 .capsule-form label {
   color: #3d4552;
@@ -861,6 +873,7 @@ body {
 
 @media (max-width: 374px) {
   .form-grid,
+  .birth-grid,
   .goal-grid { grid-template-columns: 1fr; }
   .hero-card h1 { font-size: 1.76rem; }
   .nav-item span { display: none; }
