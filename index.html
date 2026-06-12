@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeCapsule - Social Coach</title>
+  <meta name="description" content="VibeCapsule - Practice Date, Red Flag Test và Memory Capsule dành cho Gen Z." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell mx-auto">
+    <datalist id="province-list"></datalist>
+
+    <section id="screen-home" class="screen active-screen">
+      <header class="top-header d-flex align-items-center justify-content-between">
+        <div>
+          <div class="brand-mark d-flex align-items-center gap-2">
+            <span class="logo-bubble"><i class="bi bi-stars"></i></span>
+            <span>VibeCapsule</span>
+          </div>
+          <p class="small-muted mb-0 mt-1">Một không gian nhỏ để luyện vibe, lưu ký ức và hiểu mình hơn.</p>
+        </div>
+        <button class="avatar-btn" type="button" data-screen="profile" aria-label="Mở profile">
+          <i class="bi bi-person-heart"></i>
+        </button>
+      </header>
+
+      <section class="hero-card mt-4">
+        <div class="hero-media" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="position-relative">
+          <span class="pill-label"><i class="bi bi-lightning-charge-fill"></i> Social coaching riêng tư</span>
+          <h1 class="mt-3 mb-2">Tự tin hơn trong từng cuộc trò chuyện.</h1>
+          <p class="mb-4">Luyện hẹn hò thông minh, kiểm tra red flag và gửi capsule cho tương lai trong một giao diện glass tối giản.</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <button class="btn btn-light btn-main" data-screen="practice"><i class="bi bi-chat-heart"></i> Luyện date</button>
+            <button class="btn btn-outline-light btn-main" data-screen="test"><i class="bi bi-flag"></i> Làm test</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-4">
+        <div class="section-title d-flex justify-content-between align-items-center">
+          <h2>Tính năng nổi bật</h2>
+          <span>Swipe nhẹ</span>
+        </div>
+        <div class="feature-scroll">
+          <article class="feature-card practice-card" data-screen="practice">
+            <div class="feature-icon"><i class="bi bi-chat-heart-fill"></i></div>
+            <h3>Practice Date</h3>
+            <p>Tạo kịch bản nói chuyện theo tuổi, giới tính, nghề nghiệp, tỉnh thành và hình mẫu partner.</p>
+            <div class="tag-row"><span>Coach</span><span>Prompt</span><span>Action</span></div>
+            <button class="btn card-cta">Luyện ngay</button>
+          </article>
+
+          <article class="feature-card test-card" data-screen="test">
+            <div class="feature-icon"><i class="bi bi-flag-fill"></i></div>
+            <h3>Red / Green Flag</h3>
+            <p>Trả lời 7 tình huống khó, kèm phân tích red/green flag và cung hoàng đạo.</p>
+            <div class="result-preview">Deep quiz</div>
+            <button class="btn card-cta">Làm test</button>
+          </article>
+
+          <article class="feature-card capsule-card coming-soon-card">
+            <div class="feature-icon"><i class="bi bi-box2-heart-fill"></i></div>
+            <h3>Memory Capsule</h3>
+            <p>Khóa lời nhắn, ảnh hoặc video để mở lại trong tương lai. Tính năng này sẽ ra mắt sau bản static MVP.</p>
+            <div class="tag-row"><span>Private</span><span>Media</span><span>Sắp ra mắt</span></div>
+            <button class="btn card-cta" type="button" disabled>Sắp ra mắt</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-4">
+        <div class="section-title"><h2>Thao tác nhanh</h2></div>
+        <div class="quick-grid">
+          <button data-screen="practice"><i class="bi bi-magic"></i><span>Tạo date plan</span></button>
+          <button data-screen="test"><i class="bi bi-ui-checks"></i><span>Làm quiz</span></button>
+          <button data-screen="profile"><i class="bi bi-person-heart"></i><span>Profile</span></button>
+        </div>
+      </section>
+
+      <section class="mt-4 pb-3">
+        <div class="section-title"><h2>Capsule sắp mở</h2></div>
+        <div class="coming-soon-panel">
+          <i class="bi bi-hourglass-split"></i>
+          <div>
+            <h4>Memory Capsule sắp ra mắt</h4>
+            <p>Bản GitHub Pages trước mắt tập trung vào Practice Date và Red / Green Flag Test.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="screen-practice" class="screen">
+      <div class="screen-head">
+        <button class="back-btn" data-screen="home" aria-label="Về trang chủ"><i class="bi bi-chevron-left"></i></button>
+        <div><h2>Practice Date</h2><p>Plan riêng theo người thật, ngữ cảnh thật</p></div>
+      </div>
+
+      <form class="date-form mt-3" id="date-form">
+        <div class="form-section">
+          <div class="section-title compact"><h2>Thông tin của bạn</h2><span>Bắt buộc</span></div>
+          <div class="form-grid">
+            <label>Giới tính
+              <select class="form-select" id="user-gender" required>
+                <option value="">Chọn</option><option>Nam</option><option>Nữ</option><option>Khác</option>
+              </select>
+            </label>
+            <label>Độ tuổi
+              <input type="number" min="16" max="65" class="form-control" id="user-age" placeholder="22" required />
+            </label>
+            <label>Nghề nghiệp
+              <input class="form-control" id="user-job" placeholder="Sinh viên, designer..." required />
+            </label>
+            <label>Tỉnh/Thành đang ở
+              <input class="form-control" id="user-location" list="province-list" placeholder="Nhập Hồ, Hà, Đà..." required />
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="section-title compact"><h2>Partner bạn muốn luyện</h2><span>Chân dung</span></div>
+          <div class="form-grid">
+            <label>Giới tính partner
+              <select class="form-select" id="partner-gender" required>
+                <option value="">Chọn</option><option>Nam</option><option>Nữ</option><option>Khác</option>
+              </select>
+            </label>
+            <label>Độ tuổi partner
+              <input type="number" min="16" max="65" class="form-control" id="partner-age" placeholder="23" required />
+            </label>
+            <label>Nghề nghiệp
+              <input class="form-control" id="partner-job" placeholder="Marketing, bác sĩ..." required />
+            </label>
+            <label>Tỉnh/Thành partner ở
+              <input class="form-control" id="partner-location" list="province-list" placeholder="Nhập Hồ, Hà, Đà..." required />
+            </label>
+          </div>
+          <label class="mt-2">Mô tả ngắn về partner
+            <textarea class="form-control" id="partner-desc" rows="4" placeholder="Ví dụ: hướng ngoại vừa phải, thích cà phê specialty, hay đi triển lãm, hơi bận vì công việc..." required></textarea>
+          </label>
+          <div class="suggestion-row" id="desc-suggestions">
+            <button type="button">Thích cà phê, nhạc live, nói chuyện sâu</button>
+            <button type="button">Hài hước, bận rộn, thích người tinh tế</button>
+            <button type="button">Hướng nội, thích sách, không thích bị ép trả lời nhanh</button>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="section-title compact"><h2>Mục tiêu buổi luyện</h2><span>Plan riêng</span></div>
+          <div class="goal-grid" id="date-goals">
+            <button type="button" class="active" data-goal="Nhắn tin mở đầu"><i class="bi bi-chat-dots"></i> Nhắn tin mở đầu</button>
+            <button type="button" data-goal="Đi cafe lần đầu"><i class="bi bi-cup-hot"></i> Đi cafe lần đầu</button>
+            <button type="button" data-goal="Nói với crush"><i class="bi bi-heart-pulse"></i> Nói với crush</button>
+            <button type="button" data-goal="Voice call"><i class="bi bi-mic"></i> Voice call</button>
+          </div>
+          <button class="btn btn-dark w-100 mt-3" type="submit"><i class="bi bi-stars"></i> Tạo plan theo mục tiêu</button>
+        </div>
+      </form>
+
+      <section class="date-result mt-3" id="date-result">
+        <div class="empty-coach">
+          <i class="bi bi-compass"></i>
+          <h3>Điền thông tin để nhận gợi ý cá nhân hóa</h3>
+          <p>Chọn mục tiêu nào, hệ thống sẽ tạo plan riêng cho mục tiêu đó: chủ đề, câu hỏi, câu thả thính và hành động tinh tế.</p>
+        </div>
+      </section>
+
+      <section class="date-history mt-3">
+        <div class="section-title compact">
+          <h2>Lịch sử plan</h2>
+          <span id="date-history-count">0 plan</span>
+        </div>
+        <div id="date-history-list" class="stack-list"></div>
+      </section>
+    </section>
+
+    <section id="screen-test" class="screen">
+      <div class="screen-head">
+        <button class="back-btn" data-screen="home" aria-label="Về trang chủ"><i class="bi bi-chevron-left"></i></button>
+        <div><h2>Red / Green Flag Test</h2><p>7 câu hỏi khó hơn, có ngày sinh và cung hoàng đạo</p></div>
+      </div>
+
+      <form class="quiz-card mt-3" id="quiz-profile">
+        <div class="section-title compact"><h2>Hồ sơ trước khi test</h2><span>Personalize</span></div>
+        <div class="form-grid">
+          <label>Ngày sinh
+            <input type="date" class="form-control" id="birth-date" required />
+          </label>
+          <label>Giới tính
+            <select class="form-select" id="quiz-gender" required>
+              <option value="">Chọn</option><option>Nam</option><option>Nữ</option><option>Khác</option>
+            </select>
+          </label>
+        </div>
+        <button class="btn btn-dark w-100 mt-3" type="submit"><i class="bi bi-play-fill"></i> Bắt đầu 7 câu hỏi</button>
+      </form>
+
+      <div class="quiz-card mt-3 d-none" id="quiz-box">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="pill-label dark">Câu <span id="quiz-number">1</span>/7</span>
+          <span id="quiz-score-label">0 vibe</span>
+        </div>
+        <div class="progress vibe-progress mb-4" role="progressbar">
+          <div class="progress-bar" id="quiz-progress" style="width: 14%"></div>
+        </div>
+        <h3 id="quiz-question"></h3>
+        <div id="quiz-options" class="answer-list mt-4"></div>
+      </div>
+
+      <div class="result-card mt-3 d-none" id="result-box">
+        <div class="result-badge" id="result-badge">Mixed Flag</div>
+        <h3 id="result-title">Bạn có vibe khá cân bằng</h3>
+        <p id="result-desc">Bạn vừa biết quan tâm vừa cần thêm sự ổn định trong cảm xúc.</p>
+        <div id="zodiac-note" class="insight-box text-start"></div>
+        <div id="answer-review" class="answer-review"></div>
+        <button class="btn btn-dark w-100 mt-3" id="restart-quiz"><i class="bi bi-arrow-repeat"></i> Làm lại test</button>
+      </div>
+    </section>
+
+    <section id="screen-capsule" class="screen">
+      <div class="screen-head">
+        <button class="back-btn" data-screen="home" aria-label="Về trang chủ"><i class="bi bi-chevron-left"></i></button>
+        <div><h2>Memory Capsule</h2><p>Tính năng sắp ra mắt</p></div>
+      </div>
+
+      <div class="coming-soon-panel mt-3">
+        <i class="bi bi-box2-heart"></i>
+        <div>
+          <h4>Đang chuẩn bị cho bản có account thật</h4>
+          <p>Capsule sẽ quay lại khi backend lưu trữ ổn định hơn. Hiện bản static sẽ ưu tiên các tính năng không cần dữ liệu nhạy cảm.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-profile" class="screen">
+      <div class="screen-head">
+        <button class="back-btn" data-screen="home" aria-label="Về trang chủ"><i class="bi bi-chevron-left"></i></button>
+        <div><h2>Profile</h2><p>Vibe cá nhân</p></div>
+      </div>
+      <div class="profile-card mt-3">
+        <div class="profile-avatar">T</div>
+        <h3 id="profile-name">Guest</h3>
+        <p id="profile-subtitle">Local mode · chưa đăng nhập</p>
+        <div class="profile-stats">
+          <div><strong id="stat-capsules">Soon</strong><span>Capsule</span></div>
+          <div><strong>7</strong><span>Quiz</span></div>
+          <div><strong id="stat-plans">0</strong><span>Date plan</span></div>
+        </div>
+      </div>
+      <div class="auth-card mt-3 d-none" aria-hidden="true">
+        <div class="section-title compact">
+          <h2>Account</h2>
+          <span id="auth-status">Local</span>
+        </div>
+        <p class="field-hint" id="sync-mode-note">Bản static GitHub Pages chưa bật lưu trữ Capsule. Account/cloud sẽ làm ở giai đoạn sau.</p>
+        <div class="form-grid mt-3">
+          <label>Tên hiển thị
+            <input class="form-control" id="auth-name" placeholder="Tên của bạn" />
+          </label>
+          <label>Email
+            <input type="email" class="form-control" id="auth-email" placeholder="you@example.com" />
+          </label>
+        </div>
+        <label class="mt-2">Mật khẩu
+          <input type="password" class="form-control" id="auth-password" placeholder="Tối thiểu 6 ký tự" />
+        </label>
+        <div class="auth-actions mt-3">
+          <button class="btn btn-dark" id="login-btn" type="button"><i class="bi bi-box-arrow-in-right"></i> Đăng nhập</button>
+          <button class="btn btn-light" id="signup-btn" type="button"><i class="bi bi-person-plus"></i> Tạo account</button>
+          <button class="btn btn-outline-dark d-none" id="logout-btn" type="button"><i class="bi bi-box-arrow-right"></i> Đăng xuất</button>
+        </div>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-screen="home"><i class="bi bi-house-door-fill"></i><span>Home</span></button>
+      <button class="nav-item" data-screen="test"><i class="bi bi-flag-fill"></i><span>Test</span></button>
+      <button class="nav-item" data-screen="practice"><i class="bi bi-chat-heart-fill"></i><span>Practice</span></button>
+      <button class="nav-item" data-screen="profile"><i class="bi bi-person-fill"></i><span>Profile</span></button>
+    </nav>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
